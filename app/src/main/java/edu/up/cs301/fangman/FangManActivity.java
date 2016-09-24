@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @author **** put date of completion here ****
  *
  */
-public class FangManActivity extends AppCompatActivity {
+public class FangManActivity extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * standard 'onCreate' method
@@ -65,6 +65,11 @@ public class FangManActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }
 

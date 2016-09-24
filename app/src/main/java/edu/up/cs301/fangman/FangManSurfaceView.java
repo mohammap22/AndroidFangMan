@@ -68,12 +68,12 @@ public class FangManSurfaceView extends SurfaceView {
     public void onDraw(Canvas c) {
 
         // draw a random word from our list onto the Canvas
-        Paint p = new Paint();
-        p.setColor(Color.BLUE);
-        p.setTextSize(120);
-        Random ran = new Random();
-        int idx = ran.nextInt(words.length);
-        c.drawText(words[idx], 100, 600, p);
+        //Paint p = new Paint();
+        //p.setColor(Color.BLUE);
+        //p.setTextSize(120);
+        //Random ran = new Random();
+        //int idx = ran.nextInt(words.length);
+        //c.drawText(words[idx], 100, 600, p);
     }
 
     /**
