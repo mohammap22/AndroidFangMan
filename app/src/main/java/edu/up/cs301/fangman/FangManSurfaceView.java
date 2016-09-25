@@ -23,26 +23,45 @@ package edu.up.cs301.fangman;
  * @author Steven R. Vegdahl
  * @version **** put date of completion here ****
  */
-public class FangManSurfaceView extends SurfaceView {
+public class FangManSurfaceView extends SurfaceView
+{
+
+    //This will keep track of all the incorrect guesses the user has made.
+    private static int numIncorrect = 0;
+
+
+    private static char[] alphabet = {
+            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U',
+            'V','W','X','Y','Z'
+    };
+    private static int[] wordInt;
+
+    //This array will keep track of what letters in the word the user has guessed.
+    private static boolean[] wordBool;
+
+
 
     // the array of many English words, from which one is picked. This is
     // read in from a resource file.
     private static String[] words;
 
     // constructor, modeled after superclass constructor
-    public FangManSurfaceView(Context context) {
+    public FangManSurfaceView(Context context)
+    {
         super(context);
         init(context);
     }
 
     // constructor, modeled after superclass constructor
-    public FangManSurfaceView(Context context, AttributeSet attrs) {
+    public FangManSurfaceView(Context context, AttributeSet attrs)
+    {
         super(context, attrs);
         init(context);
     }
 
     // constructor, modeled after superclass constructor
-    public FangManSurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FangManSurfaceView(Context context, AttributeSet attrs, int defStyleAttr)
+    {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -67,13 +86,54 @@ public class FangManSurfaceView extends SurfaceView {
     @Override
     public void onDraw(Canvas c) {
 
+
+
+
         // draw a random word from our list onto the Canvas
-        //Paint p = new Paint();
-        //p.setColor(Color.BLUE);
+        Paint p = new Paint();
+        p.setColor(Color.BLACK);
         //p.setTextSize(120);
-        //Random ran = new Random();
-        //int idx = ran.nextInt(words.length);
+        Random ran = new Random();
+        int idx = ran.nextInt(words.length);
         //c.drawText(words[idx], 100, 600, p);
+        //c.drawCircle(100, 600,100, p);
+
+        wordInt = new int[words[idx].length()];
+        wordBool = new boolean[words[idx].length()];
+        for(int k = 0; k < wordBool.length; k++)
+        {
+            wordBool[k] = false;
+        }
+
+        //Sets a position in wordInt to the index in the alphabet where that charactet is.
+        for (int i = 0; i < alphabet.length; i++)
+        {
+            for (int j = 0; j < words[idx].length(); j++)
+            {
+                if(words[idx].charAt(j) == alphabet[i])
+                {
+                    wordInt[j] = i;
+                }
+            }
+        }
+
+    }
+
+
+    public static void letterSelected(int letterNum)
+    {
+        for (int i = 0; i < wordInt.length; i++)
+        {
+            if (letterNum == wordInt[i])
+            {
+                wordBool[i] = true;
+            }
+            else
+            {
+                numIncorrect = numIncorrect++;
+            }
+        }
+
     }
 
     /**
@@ -111,3 +171,4 @@ public class FangManSurfaceView extends SurfaceView {
         return lines.toArray(new String[0]);
     }
 }
+
