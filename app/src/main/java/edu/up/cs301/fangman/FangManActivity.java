@@ -92,6 +92,8 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
+
+
     }
 
     /**
@@ -137,15 +139,23 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
             //it will change the color of that button and mark it as selected.
             if (view == findViewById(buttonIds[ind]))
             {
-                letterSelect(ind);
-                FangManSurfaceView.letterSelected(0);
+                buttonSelect(ind);
+
+                FangManSurfaceView.letterSelected(0); //This will call a method in surface view
+                //that will change the number of incorrect guesses and see what letters the user
+                //has guessed.  It will also call wordGuessed() which will evaluate an array
+                //to see if the user has guessed the entire word.
+
+                view.invalidate();
+
             }
 
         }
 
+
     }
 
-    public void letterSelect(int index)
+    public void buttonSelect(int index)
     {
         picked[index] = true;
         findViewById(buttonIds[index]).setBackgroundColor(selectColor);
