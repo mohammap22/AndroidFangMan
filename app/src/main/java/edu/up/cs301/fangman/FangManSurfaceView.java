@@ -27,26 +27,26 @@ public class FangManSurfaceView extends SurfaceView
 {
 
     //This will keep track of all the incorrect guesses the user has made.
-    private static int numIncorrect = 0;
+    private int numIncorrect = 0;
 
     //This will keep track of whether or not the user has correctly guessed the word.
-    private static boolean allTrue = false;
+    private boolean allTrue = false;
 
 
-    private static char[] alphabet = {
-            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U',
-            'V','W','X','Y','Z'
+    private char[] alphabet = {
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u',
+            'v','w','x','y','z'
     };
 
     //This will contain all the indexes of where the letters are in the alphabet.
     //for example, if the word was at, the array would contain 0,19.
-    private static int[] wordInt;
+    private int[] wordInt;
 
     //This array will keep track of what letters in the word the user has guessed.
-    private static boolean[] wordBool;
+    private boolean[] wordBool;
 
     //Index of the word
-    private static int idx;
+    private int idx;
 
 
     // the array of many English words, from which one is picked. This is
@@ -59,7 +59,7 @@ public class FangManSurfaceView extends SurfaceView
         super(context);
         init(context);
         //
-        pickWord();
+        //pickWord();
     }
 
     // constructor, modeled after superclass constructor
@@ -68,7 +68,7 @@ public class FangManSurfaceView extends SurfaceView
         super(context, attrs);
         init(context);
         //
-        pickWord();
+        //pickWord();
     }
 
     // constructor, modeled after superclass constructor
@@ -77,7 +77,7 @@ public class FangManSurfaceView extends SurfaceView
         super(context, attrs, defStyleAttr);
         init(context);
         //
-        pickWord();
+        //pickWord();
     }
 
     /**
@@ -102,8 +102,6 @@ public class FangManSurfaceView extends SurfaceView
     public void onDraw(Canvas c) {
 
 
-
-
         // draw a random word from our list onto the Canvas
         Paint p = new Paint();
         p.setColor(Color.BLACK);
@@ -113,33 +111,61 @@ public class FangManSurfaceView extends SurfaceView
         //c.drawText(words[idx], 100, 600, p);
         //c.drawCircle(100, 600,100, p);
 
-        /*wordInt = new int[words[idx].length()];
-        wordBool = new boolean[words[idx].length()];
-        for(int k = 0; k < wordBool.length; k++)
+        //Print string
+        System.out.print(words[idx]);
+
+        //c.drawCircle(100, 600,100, p);
+
+
+        //Draw a line for each letter.
+        for (int i = 0; i < words[idx].length(); i++)
         {
-            wordBool[k] = false;
+            Path line = new Path();
+            line.moveTo(100 + (i*40), 935);
+            line.addRect(100 + (i*50),935, 140+(i*50), 945, Path.Direction.CW);
+            line.close();
+            c.drawPath(line, p);
         }
 
-        //Sets a position in wordInt to the index in the alphabet where that character is.
-        for (int i = 0; i < alphabet.length; i++)
+        for (int i = 0; i < wordBool.length; i++)
         {
-            for (int j = 0; j < words[idx].length(); j++)
+            p.setTextSize(70);
+            if (wordBool[i])
             {
-                if(words[idx].charAt(j) == alphabet[i])
-                {
-                    wordInt[j] = i;
-                }
+                int letterInt = wordInt[i];
+                c.drawText(String.valueOf(alphabet[letterInt]), 100 + (i*50) , 930, p);
             }
-        }*/
+        }
+
         if (!allTrue)
         {
+            if (numIncorrect == 0)
+            {
+                //c.drawCircle(450, 450, 100, p);
+            }
             if (numIncorrect == 1)
             {
-                c.drawCircle(100, 600,100, p);
+                c.drawCircle(550, 450, 300, p);
             }
             if (numIncorrect == 2)
             {
-                c.drawCircle(100, 600,200, p);
+                c.drawCircle(550, 450, 300, p);
+            }
+            if (numIncorrect == 3)
+            {
+                c.drawCircle(550, 450, 300, p);
+            }
+            if (numIncorrect == 4)
+            {
+                c.drawCircle(550, 450, 300, p);
+            }
+            if (numIncorrect == 5)
+            {
+                c.drawCircle(550, 450, 300, p);
+            }
+            if (numIncorrect == 6)
+            {
+                c.drawCircle(550, 450, 300, p);
             }
         }
 
@@ -150,7 +176,7 @@ public class FangManSurfaceView extends SurfaceView
     /**
      * This method will pick a word and set up all the instance variables.
      */
-    public static void pickWord()
+    public void pickWord()
     {
         Random ran = new Random();
         idx = ran.nextInt(words.length);
@@ -181,19 +207,20 @@ public class FangManSurfaceView extends SurfaceView
      * wordGuessed() to see if the word has been correctly guessed.
      * @param letterNum
      */
-    public static void letterSelected(int letterNum)
+    public void letterSelected(int letterNum)
     {
+        boolean changed = false;
         for (int i = 0; i < wordInt.length; i++)
         {
             if (letterNum == wordInt[i])
             {
                 wordBool[i] = true;
+                changed = true;
             }
-            else
-            {
-                numIncorrect = numIncorrect++;
-
-            }
+        }
+        if (!changed)
+        {
+            numIncorrect = numIncorrect+1;
         }
         wordGuessed();
 
@@ -205,7 +232,7 @@ public class FangManSurfaceView extends SurfaceView
      * have been correctly guessed by the user.  If the array is all true, then the user has
      * correctly guessed the word.
      */
-    public static void wordGuessed()
+    public void wordGuessed()
     {
         for (int i = 0; i < wordBool.length; i++)
         {

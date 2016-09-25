@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,9 +21,13 @@ import java.util.ArrayList;
  */
 public class FangManActivity extends AppCompatActivity implements View.OnClickListener
 {
+
+    private FangManSurfaceView fang;
+
+
     //This array will store all of the ideas for the letter buttons,
     //allowing for easier access later.
-    private static int[] buttonIds = {
+    private int[] buttonIds = {
             R.id.aButton,
             R.id.bButton,
             R.id.cButton,
@@ -57,7 +62,7 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
 
 
     //Array containing all the letters in the alphabet.
-    private static boolean[] picked = new boolean[26];
+    private boolean[] picked = new boolean[26];
 
 
     /**
@@ -72,6 +77,8 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
 
         // invoke superclass constructor
         super.onCreate(savedInstanceState);
+
+
 
         // load layout
         setContentView(R.layout.activity_fang_man);
@@ -90,6 +97,8 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
 
         }
 
+        fang = (FangManSurfaceView)findViewById(R.id.main_view);
+        fang.pickWord();
 
 
 
@@ -141,12 +150,12 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
             {
                 buttonSelect(ind);
 
-                FangManSurfaceView.letterSelected(0); //This will call a method in surface view
+                fang.letterSelected(ind); //This will call a method in surface view
                 //that will change the number of incorrect guesses and see what letters the user
                 //has guessed.  It will also call wordGuessed() which will evaluate an array
                 //to see if the user has guessed the entire word.
 
-                view.invalidate();
+                fang.invalidate();
 
             }
 
