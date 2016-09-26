@@ -28,6 +28,9 @@ package edu.up.cs301.fangman;
 public class FangManSurfaceView extends SurfaceView
 {
 
+    private static int gamesWon = 0;
+
+
     //This will keep track of all the incorrect guesses the user has made.
     private int numIncorrect = 0;
 
@@ -164,6 +167,8 @@ public class FangManSurfaceView extends SurfaceView
             int letterI = guesses[i];
             c.drawText(String.valueOf(alphabet[letterI]) + " ", 640 + (i*50), 1100, d);
         }
+        c.drawText("Games Won: ", 100, 1200, d);
+        c.drawText(String.valueOf(gamesWon), 510, 1200, d);
 
 
         if (!allTrue)
@@ -377,6 +382,7 @@ public class FangManSurfaceView extends SurfaceView
             c.drawText("Would you",775, 480, d);
             c.drawText("like to", 835, 540, d);
             c.drawText("play again?", 775, 600, d);
+
         }
 
 
@@ -471,6 +477,10 @@ public class FangManSurfaceView extends SurfaceView
                 allTrue = false;
                 break;
             }
+        }
+        if (allTrue)
+        {
+            gamesWon = gamesWon+1;
         }
     }
 
