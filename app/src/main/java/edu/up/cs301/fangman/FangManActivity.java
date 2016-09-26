@@ -187,13 +187,13 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 else
                 {
-                    if (fang.getNumIncorrect() != 6)
+                    if (fang.getNumIncorrect() != 5)
                     {
                         bigLaugh.start();
                     }
                 }
 
-                if (fang.getNumIncorrect() == 6)
+                if (fang.getNumIncorrect() == 5)
                 {
                     for (int i = 0; i < buttonIds.length; i++)
                     {

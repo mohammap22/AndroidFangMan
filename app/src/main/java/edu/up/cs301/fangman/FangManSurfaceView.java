@@ -112,11 +112,6 @@ public class FangManSurfaceView extends SurfaceView
         // draw a random word from our list onto the Canvas
         Paint p = new Paint();
         p.setColor(Color.BLACK);
-        //p.setTextSize(120);
-        //Random ran = new Random();
-        //int idx = ran.nextInt(words.length);
-        //c.drawText(words[idx], 100, 600, p);
-        //c.drawCircle(100, 600,100, p);
 
         //Create all the different colors for the fang man.
         Paint face = new Paint();
@@ -139,9 +134,6 @@ public class FangManSurfaceView extends SurfaceView
 
         Paint d = new Paint();
         d.setColor(Color.WHITE);
-
-
-        //c.drawCircle(100, 600,100, p);
 
 
         //Draw a line for each letter.
@@ -243,38 +235,9 @@ public class FangManSurfaceView extends SurfaceView
                 //cheeks
                 c.drawCircle(275, 525, 50, cheeks);
                 c.drawCircle(625, 525, 50, cheeks);
+
             }
             if (numIncorrect == 4)
-            {
-                c.drawCircle(450, 450, 300, face);
-
-                //ears
-                c.drawCircle(160, 450, 40, face);
-                c.drawCircle(740, 450, 40, face);
-
-                //eyes
-                c.drawCircle(400, 420, 20, p);
-                c.drawCircle(500, 420, 20, p);
-
-                //nose
-                RectF nose = new RectF(420, 470, 480, 500);
-                noseC.setStrokeWidth(5);
-                noseC.setStyle(Paint.Style.STROKE);
-                c.drawArc(nose, 0, 180, false, noseC);
-
-
-                //mouth
-                RectF mouth = new RectF(380, 480, 520, 600);
-                p.setStrokeWidth(5);
-                p.setStyle(Paint.Style.STROKE);
-                c.drawArc(mouth, 0, 180, false, p);
-
-                //cheeks
-                c.drawCircle(275, 525, 50, cheeks);
-                c.drawCircle(625, 525, 50, cheeks);
-
-            }
-            if (numIncorrect == 5)
             {
                 c.drawCircle(450, 450, 300, face);
 
@@ -325,7 +288,7 @@ public class FangManSurfaceView extends SurfaceView
                 c.drawCircle(625, 525, 50, cheeks);
 
             }
-            if (numIncorrect == 6)
+            if (numIncorrect == 5)
             {
                 c.drawCircle(450, 450, 300, face);
 
