@@ -1,1 +1,51 @@
-Log any outside help you get in this file.
+Date:
+    25 September 2016
+Problem:
+    I am having issues with the invalidate() method.  I am calling it in my onClick() method
+    but it doesn't seem to be doing anything.  I have researched why this several times but
+    can't seem to find anything.
+Resource Used:
+    I emailed Professor Vegdahl and he told me that this method has to be used on an Surface View
+    object in order for it to work.
+Resource Used:
+    I asked my friend Andrew Ripple and he told me to use the invalidate() method on a Surface View
+    object.
+Solution:
+    I created an instance of the FangManSurfaceView class and called the invalidate method on this
+    and it worked!
+
+Date:
+    26 September 2016
+Problem:
+    I am not sure how to play audio files when a button is pressed.
+Resource Used:
+    I looked this up online and found a tutorial on how to import audio files and how to add
+    them into the Activity class using the Media Player class.
+    https://www.youtube.com/watch?v=9oj4f8721LM
+Solution:
+    I followed the tutorial, called the various sounds in my onClick method and was able to get
+    the sounds to play when a button is clicked.
+
+Date:
+    26 September 2016
+Problem:
+    I want to add a Haunted Mansion theme background to my app but am not sure how to do so.
+Resource Used:
+    I looked this up online and found that you have to create a drawable folder in your res folder
+    in which you store the background you would like to use.  You then have to write
+    android:background="@drawable/backgroundName" into the xml for the layout.
+    http://stackoverflow.com/questions/3307090/how-to-add-background-image-to-activity
+Solution:
+    I created a drawable folder, added in my picture and the line of code to the xml and was able
+    to get my background to show up.
+
+Date:
+    25 September 2016
+Problem:
+    I want my vampire Fang Man to have a curved hairline.  I am trying to do this with a path
+    and the pathName.addArc() but it is only drawing a portion of the arc.
+Resource Used:
+    I looked at the documentation for path and there is addArc() and also arcTo().
+    https://developer.android.com/reference/android/graphics/Path.html
+Solution:
+    I tried using arcTo() instead of addArc() and was able to get all the arc to be drawn.

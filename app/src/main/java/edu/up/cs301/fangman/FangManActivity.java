@@ -17,8 +17,8 @@ import java.util.ArrayList;
 /**
  * activity class for the Fang Man game
  *
- * @author **** put your name here ****
- * @author **** put date of completion here ****
+ * @author **** Paige McKinney ****
+ * @author **** 9/26/16 ****
  *
  */
 public class FangManActivity extends AppCompatActivity implements View.OnClickListener

@@ -21,9 +21,9 @@ package edu.up.cs301.fangman;
 /**
  * SurfaceView for playing "Fang Man" game.
  *
- * @author **** put your name here ****
+ * @author **** Paige McKinney ****
  * @author Steven R. Vegdahl
- * @version **** put date of completion here ****
+ * @version **** 9/26/16 ****
  */
 public class FangManSurfaceView extends SurfaceView
 {
