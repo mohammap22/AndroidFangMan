@@ -8,13 +8,14 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="588dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background = "@drawable/hauntedmansionwallpaper">
 
         <edu.up.cs301.fangman.FangManSurfaceView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/main_view"
-            android:background="#582b63"
+            android:background = "@drawable/hauntedmansionwallpaper"
             android:layout_weight="1000"
             android:clickable="false" />
     </LinearLayout>
@@ -24,7 +25,7 @@
         android:layout_width="436dp"
         android:layout_height="match_parent"
         android:weightSum="1"
-        android:background="#582b63">
+        android:background = "@drawable/hauntedmansionwallpaper">
 
         <TextView
             android:layout_width="443dp"
@@ -39,7 +40,8 @@
             android:singleLine="false"
             android:visibility="visible"
             android:paddingEnd="40dp"
-            android:layout_weight="0.14" />
+            android:layout_weight="0.14"
+            android:textColor="#ffffff" />
 
         <Space
             android:layout_width="match_parent"

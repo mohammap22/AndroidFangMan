@@ -53,6 +53,8 @@ public class FangManSurfaceView extends SurfaceView
     private int[] guesses = new int[26];
     private int numGuesses = 0;
 
+    private boolean changed = false;
+
     // the array of many English words, from which one is picked. This is
     // read in from a resource file.
     private static String[] words;
@@ -135,6 +137,9 @@ public class FangManSurfaceView extends SurfaceView
         Paint hairColor = new Paint();
         hairColor.setColor(Color.BLACK);
 
+        Paint d = new Paint();
+        d.setColor(Color.WHITE);
+
 
         //c.drawCircle(100, 600,100, p);
 
@@ -146,26 +151,26 @@ public class FangManSurfaceView extends SurfaceView
             line.moveTo(100 + (i*40), 935);
             line.addRect(100 + (i*50),935, 140+(i*50), 945, Path.Direction.CW);
             line.close();
-            c.drawPath(line, p);
+            c.drawPath(line, d);
         }
 
         //Prints the letters the user has guessed if correct.
         for (int i = 0; i < wordBool.length; i++)
         {
-            p.setTextSize(70);
+            d.setTextSize(70);
             if (wordBool[i])
             {
                 int letterInt = wordInt[i];
-                c.drawText(String.valueOf(alphabet[letterInt]), 100 + (i*50) , 930, p);
+                c.drawText(String.valueOf(alphabet[letterInt]), 100 + (i*50) , 930, d);
             }
         }
 
-        c.drawText("Letters guessed: ", 100, 1100, p);
+        c.drawText("Letters guessed: ", 100, 1100, d);
         //Draws the letters guessed:
         for (int i = 0; i < numGuesses; i++)
         {
             int letterI = guesses[i];
-            c.drawText(String.valueOf(alphabet[letterI]) + " ", 640 + (i*50), 1100, p);
+            c.drawText(String.valueOf(alphabet[letterI]) + " ", 640 + (i*50), 1100, d);
         }
 
 
@@ -372,29 +377,29 @@ public class FangManSurfaceView extends SurfaceView
 
                 //hair
                 Path allHair = new Path();
-                allHair.moveTo(160, 300);
+                allHair.moveTo(165, 300);
                 RectF hairShapeL = new RectF(165, 300, 450, 450);
                 allHair.arcTo(hairShapeL, 180, 180, false);
                 RectF hairShapeR = new RectF(450,300,740,450);
                 allHair.arcTo(hairShapeR, 180, 180, false);
                 RectF hairShapeT = new RectF(149, 148, 750, 750);
-                allHair.arcTo(hairShapeT, 0, -180, false);
+                allHair.arcTo(hairShapeT, -10, -160, false);
                 c.drawPath(allHair, hairColor);
 
                 //This is the last guess, so the user has LOST.
-                p.setStyle(Paint.Style.FILL);
-                p.setTextSize(100);
-                c.drawText("You lose!", 760, 410, p);
-                p.setTextSize(75);
-                c.drawText("Would you",775, 480, p);
-                c.drawText("like to", 835, 540, p);
-                c.drawText("play again?", 775, 600, p);
+                d.setStyle(Paint.Style.FILL);
+                d.setTextSize(100);
+                c.drawText("You lose!", 760, 410, d);
+                d.setTextSize(75);
+                c.drawText("Would you",775, 480, d);
+                c.drawText("like to", 835, 540, d);
+                c.drawText("play again?", 775, 600, d);
                 for (int i = 0; i < wordBool.length; i++)
                 {
 
-                    p.setTextSize(70);
+                    d.setTextSize(70);
                     int letterInt = wordInt[i];
-                    c.drawText(String.valueOf(alphabet[letterInt]), 100 + (i*50) , 930, p);
+                    c.drawText(String.valueOf(alphabet[letterInt]), 100 + (i*50) , 930, d);
 
                 }
 
@@ -402,13 +407,13 @@ public class FangManSurfaceView extends SurfaceView
         }
         if (allTrue)
         {
-            p.setStyle(Paint.Style.FILL);
-            p.setTextSize(100);
-            c.drawText("You win!", 760, 410, p);
-            p.setTextSize(75);
-            c.drawText("Would you",775, 480, p);
-            c.drawText("like to", 835, 540, p);
-            c.drawText("play again?", 775, 600, p);
+            d.setStyle(Paint.Style.FILL);
+            d.setTextSize(100);
+            c.drawText("You win!", 760, 410, d);
+            d.setTextSize(75);
+            c.drawText("Would you",775, 480, d);
+            c.drawText("like to", 835, 540, d);
+            c.drawText("play again?", 775, 600, d);
         }
 
 
@@ -418,6 +423,16 @@ public class FangManSurfaceView extends SurfaceView
     public int getNumIncorrect()
     {
         return numIncorrect;
+    }
+
+    public boolean getChanged()
+    {
+        return changed;
+    }
+
+    public boolean getAllTrue()
+    {
+        return allTrue;
     }
 
     /**
@@ -456,9 +471,9 @@ public class FangManSurfaceView extends SurfaceView
      */
     public void letterSelected(int letterNum)
     {
+        changed = false;
         guesses[numGuesses] = letterNum;
         numGuesses = numGuesses+1;
-        boolean changed = false;
         for (int i = 0; i < wordInt.length; i++)
         {
             if (letterNum == wordInt[i])
@@ -472,7 +487,6 @@ public class FangManSurfaceView extends SurfaceView
             numIncorrect = numIncorrect+1;
         }
         wordGuessed();
-
     }
 
 

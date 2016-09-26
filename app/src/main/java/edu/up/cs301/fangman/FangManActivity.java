@@ -2,8 +2,10 @@ package edu.up.cs301.fangman;
 
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SurfaceView;
@@ -24,6 +26,13 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
 
     private FangManSurfaceView fang;
 
+
+    MediaPlayer bigLaugh;
+    MediaPlayer chillingChallenge;
+    MediaPlayer followHome;
+    MediaPlayer laugh;
+    MediaPlayer welcome;
+    MediaPlayer dismay;
 
     //This array will store all of the ideas for the letter buttons,
     //allowing for easier access later.
@@ -57,12 +66,14 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
     };
 
 
-    int selectColor = Color.argb(150, 0, 0, 0); //The semi-transparent black the buttons will be set
+    int selectColor = Color.argb(230, 0, 0, 0); //The semi-transparent black the buttons will be set
     //to upon being selected.
 
 
     //Array containing all the letters in the alphabet.
     private boolean[] picked = new boolean[26];
+
+
 
 
     /**
@@ -102,6 +113,14 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
 
         fang = (FangManSurfaceView)findViewById(R.id.main_view);
         fang.pickWord();
+
+        bigLaugh = MediaPlayer.create(this, R.raw.big_laugh);
+        chillingChallenge = MediaPlayer.create(this, R.raw.chilling_challenge);
+        followHome = MediaPlayer.create(this, R.raw.follow_you_home);
+        laugh = MediaPlayer.create(this, R.raw.laugh);
+        welcome = MediaPlayer.create(this, R.raw.welcome);
+        dismay = MediaPlayer.create(this, R.raw.dismaying_observation);
+
 
 
 
@@ -158,20 +177,40 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
                 //has guessed.  It will also call wordGuessed() which will evaluate an array
                 //to see if the user has guessed the entire word.
 
-                fang.invalidate();
+                boolean correct = fang.getChanged();
+
+                        fang.invalidate();
+
+                if(correct)
+                {
+                    laugh.start();
+                }
+                else
+                {
+                    if (fang.getNumIncorrect() != 6)
+                    {
+                        bigLaugh.start();
+                    }
+                }
 
                 if (fang.getNumIncorrect() == 6)
                 {
                     for (int i = 0; i < buttonIds.length; i++)
                     {
                         buttonSelect(i);
+                        followHome.start();
                     }
+                }
+                if(fang.getAllTrue())
+                {
+                    dismay.start();
                 }
 
             }
             if (view == findViewById(R.id.restartButton))
             {
                 recreate();
+                chillingChallenge.start();
             }
 
         }
