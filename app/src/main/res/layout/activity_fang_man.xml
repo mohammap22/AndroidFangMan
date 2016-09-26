@@ -30,7 +30,7 @@
             android:layout_width="443dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Fang Man"
+            android:text=" Fang Man"
             android:id="@+id/fangManTitle"
             android:layout_gravity="center_horizontal"
             android:textSize="70sp"
@@ -405,6 +405,34 @@
                     android:clickable="true" />
             </TableRow>
         </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.14">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:text="Restart Game"
+            android:id="@+id/restartButton"
+            android:textSize="28sp"
+            android:textColor="#ffffff"
+            android:background="#000000"
+            android:onClick="onClick"
+            android:clickable="true"
+            android:layout_column="13"
+            android:layout_width="258dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.17" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -90,6 +90,9 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
             letterBut.setOnClickListener(this);
         }
 
+        Button restartBut = (Button)findViewById(R.id.restartButton);
+        restartBut.setOnClickListener(this);
+
         for (int j = 0; j < picked.length; j++)
         {
             picked[j] = false; //If the button has not been selected by the user it will be
@@ -157,6 +160,18 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
 
                 fang.invalidate();
 
+                if (fang.getNumIncorrect() == 6)
+                {
+                    for (int i = 0; i < buttonIds.length; i++)
+                    {
+                        buttonSelect(i);
+                    }
+                }
+
+            }
+            if (view == findViewById(R.id.restartButton))
+            {
+                recreate();
             }
 
         }
@@ -168,6 +183,7 @@ public class FangManActivity extends AppCompatActivity implements View.OnClickLi
     {
         picked[index] = true;
         findViewById(buttonIds[index]).setBackgroundColor(selectColor);
+        findViewById(buttonIds[index]).setEnabled(false);
     }
 }
 
