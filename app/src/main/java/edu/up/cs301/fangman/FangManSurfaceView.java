@@ -163,6 +163,104 @@ public class FangManSurfaceView extends SurfaceView
         {
             if (numIncorrect == 0)
             {
+
+            }
+            if (numIncorrect == 1)
+            {
+                c.drawCircle(450, 450, 300, face);
+
+                //ears
+                c.drawCircle(160, 450, 40, face);
+                c.drawCircle(740, 450, 40, face);
+
+            }
+            if (numIncorrect == 2)
+            {
+                c.drawCircle(450, 450, 300, face);
+
+                //ears
+                c.drawCircle(160, 450, 40, face);
+                c.drawCircle(740, 450, 40, face);
+
+                //eyes
+                c.drawCircle(400, 420, 20, p);
+                c.drawCircle(500, 420, 20, p);
+
+                //nose
+                RectF nose = new RectF(420, 470, 480, 500);
+                noseC.setStrokeWidth(5);
+                noseC.setStyle(Paint.Style.STROKE);
+                c.drawArc(nose, 0, 180, false, noseC);
+
+
+                //mouth
+                RectF mouth = new RectF(380, 480, 520, 600);
+                p.setStrokeWidth(5);
+                p.setStyle(Paint.Style.STROKE);
+                c.drawArc(mouth, 0, 180, false, p);
+
+            }
+            if (numIncorrect == 3)
+            {
+                c.drawCircle(450, 450, 300, face);
+
+                //ears
+                c.drawCircle(160, 450, 40, face);
+                c.drawCircle(740, 450, 40, face);
+
+                //eyes
+                c.drawCircle(400, 420, 20, p);
+                c.drawCircle(500, 420, 20, p);
+
+                //nose
+                RectF nose = new RectF(420, 470, 480, 500);
+                noseC.setStrokeWidth(5);
+                noseC.setStyle(Paint.Style.STROKE);
+                c.drawArc(nose, 0, 180, false, noseC);
+
+
+                //mouth
+                RectF mouth = new RectF(380, 480, 520, 600);
+                p.setStrokeWidth(5);
+                p.setStyle(Paint.Style.STROKE);
+                c.drawArc(mouth, 0, 180, false, p);
+
+                //cheeks
+                c.drawCircle(275, 525, 50, cheeks);
+                c.drawCircle(625, 525, 50, cheeks);
+            }
+            if (numIncorrect == 4)
+            {
+                c.drawCircle(450, 450, 300, face);
+
+                //ears
+                c.drawCircle(160, 450, 40, face);
+                c.drawCircle(740, 450, 40, face);
+
+                //eyes
+                c.drawCircle(400, 420, 20, p);
+                c.drawCircle(500, 420, 20, p);
+
+                //nose
+                RectF nose = new RectF(420, 470, 480, 500);
+                noseC.setStrokeWidth(5);
+                noseC.setStyle(Paint.Style.STROKE);
+                c.drawArc(nose, 0, 180, false, noseC);
+
+
+                //mouth
+                RectF mouth = new RectF(380, 480, 520, 600);
+                p.setStrokeWidth(5);
+                p.setStyle(Paint.Style.STROKE);
+                c.drawArc(mouth, 0, 180, false, p);
+
+                //cheeks
+                c.drawCircle(275, 525, 50, cheeks);
+                c.drawCircle(625, 525, 50, cheeks);
+
+            }
+            if (numIncorrect == 5)
+            {
                 c.drawCircle(450, 450, 300, face);
 
                 //ears
@@ -207,76 +305,73 @@ public class FangManSurfaceView extends SurfaceView
                 p.setStyle(Paint.Style.STROKE);
                 c.drawArc(mouth, 0, 180, false, p);
 
-                //right hair
-                //RectF hairRR = new RectF(500, 500, 740, 300);
-                //hair.setStrokeWidth(5);
-                //hair.setStyle(Paint.Style.STROKE);
-                //c.drawArc(hairRR, 180, 360, false, p);
+                //cheeks
+                c.drawCircle(275, 525, 50, cheeks);
+                c.drawCircle(625, 525, 50, cheeks);
+
+            }
+            if (numIncorrect == 6)
+            {
+                c.drawCircle(450, 450, 300, face);
+
+                //ears
+                c.drawCircle(160, 450, 40, face);
+                c.drawCircle(740, 450, 40, face);
+
+                //eyes
+                c.drawCircle(400, 420, 20, p);
+                c.drawCircle(500, 420, 20, p);
+
+                //nose
+                RectF nose = new RectF(420, 470, 480, 500);
+                noseC.setStrokeWidth(5);
+                noseC.setStyle(Paint.Style.STROKE);
+                c.drawArc(nose, 0, 180, false, noseC);
+
+
+                //fangs
+                Path fang1 = new Path();
+                fang1.moveTo(390, 576);
+                fang1.lineTo(393, 660);
+                fang1.lineTo(440, 603);
+                fang1.close();
+                c.drawPath(fang1, fangCol);
+
+                p.setStyle(Paint.Style.STROKE);
+                c.drawPath(fang1, p);
+
+                Path fang2 = new Path();
+                fang2.moveTo(510, 576);
+                fang2.lineTo(507, 660);
+                fang2.lineTo(460, 603);
+                fang2.close();
+                c.drawPath(fang2, fangCol);
+
+                p.setStyle(Paint.Style.STROKE);
+                c.drawPath(fang2, p);
+
+                //mouth
+                RectF mouth = new RectF(380, 480, 520, 600);
+                p.setStrokeWidth(5);
+                p.setStyle(Paint.Style.STROKE);
+                c.drawArc(mouth, 0, 180, false, p);
 
                 //cheeks
                 c.drawCircle(275, 525, 50, cheeks);
                 c.drawCircle(625, 525, 50, cheeks);
 
-
+                //hair
                 Path allHair = new Path();
                 allHair.moveTo(160, 300);
-                RectF hairShapeL = new RectF(160, 300, 450, 450);
-                allHair.addArc(hairShapeL, 180, 180);
+                RectF hairShapeL = new RectF(165, 300, 450, 450);
+                allHair.arcTo(hairShapeL, 180, 180, false);
                 RectF hairShapeR = new RectF(450,300,740,450);
-                allHair.addArc(hairShapeR, 180, 180);
-                RectF hairShapeT = new RectF(150, 150, 750, 750);
-                allHair.addArc(hairShapeT, 200, 140);
-                //allHair.close();
-                hairColor.setStrokeWidth(5);
-                hairColor.setStyle(Paint.Style.STROKE);
+                allHair.arcTo(hairShapeR, 180, 180, false);
+                RectF hairShapeT = new RectF(149, 148, 750, 750);
+                allHair.arcTo(hairShapeT, 0, -180, false);
                 c.drawPath(allHair, hairColor);
 
 
-                //c.drawArc(hairShapeL, 180, 180, false, p);
-
-                //c.drawArc(hairShapeR, 180, 180, false, p);
-
-
-
-//                RectF hairL = new RectF(160,300,450,450);
-//
-//                p.setStrokeWidth(5);
-//                p.setStyle(Paint.Style.STROKE);
-//                c.drawArc(hairL, 180, 180, true, p);
-
-
-
-
-
-//                RectF hairT = new RectF(740, 300, 160, 300);
-//                c.drawArc(hairT, 0, 180, true, hair);
-
-
-
-            }
-            if (numIncorrect == 1)
-            {
-                c.drawCircle(550, 450, 300, p);
-            }
-            if (numIncorrect == 2)
-            {
-                c.drawCircle(550, 450, 300, p);
-            }
-            if (numIncorrect == 3)
-            {
-                c.drawCircle(550, 450, 300, p);
-            }
-            if (numIncorrect == 4)
-            {
-                c.drawCircle(550, 450, 300, p);
-            }
-            if (numIncorrect == 5)
-            {
-                c.drawCircle(550, 450, 300, p);
-            }
-            if (numIncorrect == 6)
-            {
-                c.drawCircle(550, 450, 300, p);
             }
         }
 
